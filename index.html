@@ -8,32 +8,61 @@
 </head>
 <body>
   <div class="app">
-    <h1>📝 我的待办清单</h1>
+    <!-- 左侧：日历 -->
+    <aside class="calendar">
+      <div class="cal-header">
+        <button id="prev-month" class="cal-nav">‹</button>
+        <span id="cal-title">2026年7月</span>
+        <button id="next-month" class="cal-nav">›</button>
+      </div>
+      <div class="cal-weekdays">
+        <span>日</span><span>一</span><span>二</span>
+        <span>三</span><span>四</span><span>五</span><span>六</span>
+      </div>
+      <div id="cal-days" class="cal-days"></div>
+      <button id="today-btn" class="today-btn">回到今天</button>
+    </aside>
 
-    <form id="todo-form" class="input-row">
-      <input
-        id="todo-input"
-        type="text"
-        placeholder="今天要做点什么？"
-        autocomplete="off"
-      />
-      <button type="submit">添加</button>
-    </form>
+    <!-- 右侧：当天的任务清单 -->
+    <main class="panel">
+      <h1 id="panel-title">📝 今天的待办</h1>
 
-    <div class="filters">
-      <button class="filter active" data-filter="all">全部</button>
-      <button class="filter" data-filter="active">未完成</button>
-      <button class="filter" data-filter="done">已完成</button>
-    </div>
+      <form id="todo-form" class="input-row">
+        <input
+          id="todo-input"
+          type="text"
+          placeholder="这一天要做点什么？"
+          autocomplete="off"
+        />
+        <button type="submit">添加</button>
+      </form>
 
-    <ul id="todo-list"></ul>
+      <div class="filters">
+        <button class="filter active" data-filter="all">全部</button>
+        <button class="filter" data-filter="active">未完成</button>
+        <button class="filter" data-filter="done">已完成</button>
+      </div>
 
-    <p id="empty-hint" class="empty-hint">还没有任务，添加一个吧！</p>
+      <ul id="todo-list"></ul>
 
-    <footer>
-      <span id="count">0 项待办</span>
-      <button id="clear-done" class="clear-btn">清除已完成</button>
-    </footer>
+      <p id="empty-hint" class="empty-hint">这一天还没有任务，添加一个吧！</p>
+
+      <footer>
+        <span id="count">0 项待办</span>
+        <button id="clear-done" class="clear-btn">清除已完成</button>
+      </footer>
+
+      <section class="reflection">
+        <label for="reflection-input" class="reflection-label">🌙 今日反思</label>
+        <textarea
+          id="reflection-input"
+          class="reflection-input"
+          placeholder="今天做得怎么样？有什么想记下来的？"
+          rows="3"
+        ></textarea>
+        <span id="reflection-saved" class="reflection-saved"></span>
+      </section>
+    </main>
   </div>
 
   <script src="app.js"></script>
